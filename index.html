@@ -1,0 +1,2792 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>디지털 목공 실무 마스터 과정 | NEXTWOOD</title>
+  <style>
+    /* =========================================================
+       디지털 목공 실무 마스터 과정 - 중간 콘텐츠 전용
+       이미지 교체 방법: HTML에서 YOUR_IMAGE_URL_01 ~ 11를 검색해
+       실제 이미지 링크로 교체하면 됩니다.
+       ========================================================= */
+
+    .yc-course-middle,
+    .yc-course-middle * {
+      box-sizing: border-box;
+    }
+
+    .yc-course-middle {
+      --brown-900: #2f1d12;
+      --brown-800: #452713;
+      --brown-700: #633817;
+      --brown-600: #845020;
+      --brown-500: #a66b2f;
+      --gold-400: #c99657;
+      --cream-50: #fffdf9;
+      --cream-100: #fbf7f1;
+      --cream-200: #f4ecdf;
+      --cream-300: #e9dac6;
+      --line: #e7d9c8;
+      --text: #2b211b;
+      --muted: #76675c;
+      --white: #ffffff;
+      width: 100%;
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 8% 6%, rgba(198, 145, 82, 0.10), transparent 28%),
+        radial-gradient(circle at 94% 46%, rgba(99, 56, 23, 0.07), transparent 30%),
+        linear-gradient(180deg, #fffdfa 0%, #ffffff 34%, #fbf7f1 100%);
+      font-family: Pretendard, "Noto Sans KR", "Apple SD Gothic Neo", Arial, sans-serif;
+      line-height: 1.65;
+      word-break: keep-all;
+      overflow: hidden;
+    }
+
+    .yc-course-middle a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .yc-course-middle .course-wrap {
+      width: min(1280px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .yc-course-middle .course-section {
+      position: relative;
+      padding: 96px 0;
+    }
+
+    .yc-course-middle .course-section + .course-section {
+      border-top: 1px solid rgba(98, 58, 26, 0.10);
+    }
+
+    .yc-course-middle .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 32px;
+      align-items: end;
+      margin-bottom: 38px;
+    }
+
+    .yc-course-middle .section-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      color: var(--brown-600);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .yc-course-middle .section-kicker::before {
+      content: "";
+      width: 28px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--brown-700), var(--gold-400));
+      border-radius: 999px;
+    }
+
+    .yc-course-middle .section-title {
+      margin: 0;
+      color: var(--brown-900);
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1.16;
+      letter-spacing: -0.04em;
+    }
+
+    .yc-course-middle .section-desc {
+      max-width: 590px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .yc-course-middle .section-note {
+      max-width: 360px;
+      padding: 15px 18px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.78);
+      color: #69584c;
+      font-size: 13px;
+      box-shadow: 0 14px 40px rgba(64, 37, 18, 0.06);
+      backdrop-filter: blur(8px);
+    }
+
+    /* 이미지 공통 */
+    .yc-course-middle .image-frame {
+      position: relative;
+      overflow: hidden;
+      min-height: 230px;
+      border-radius: 18px;
+      border: 1px solid rgba(95, 53, 19, 0.14);
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(243, 233, 220, 0.96)),
+        repeating-linear-gradient(45deg, transparent 0 12px, rgba(99, 56, 23, 0.03) 12px 24px);
+    }
+
+    .yc-course-middle .image-frame img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      opacity: 0;
+      transform: scale(1.01);
+      transition: opacity 0.25s ease, transform 0.5s ease;
+    }
+
+    .yc-course-middle .image-frame.is-loaded img {
+      opacity: 1;
+    }
+
+    .yc-course-middle .image-frame:hover img {
+      transform: scale(1.035);
+    }
+
+    .yc-course-middle .image-fallback {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 26px;
+      text-align: center;
+      color: #8c735f;
+    }
+
+    .yc-course-middle .image-fallback strong {
+      color: var(--brown-700);
+      font-size: 15px;
+    }
+
+    .yc-course-middle .image-fallback span {
+      font-size: 12px;
+    }
+
+    .yc-course-middle .image-frame.is-loaded .image-fallback {
+      display: none;
+    }
+
+    /* 교육 목표 요약 */
+    .yc-course-middle .goal-band {
+      position: relative;
+      z-index: 2;
+      margin-top: -1px;
+      padding: 42px 0;
+      color: var(--white);
+      background:
+        linear-gradient(115deg, rgba(47, 29, 18, 0.98), rgba(101, 57, 22, 0.96)),
+        linear-gradient(90deg, #2f1d12, #77441d);
+    }
+
+    .yc-course-middle .goal-grid {
+      display: grid;
+      grid-template-columns: 1.25fr repeat(4, minmax(0, 1fr));
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .yc-course-middle .goal-intro {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 138px;
+      padding-right: 24px;
+      border-right: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .yc-course-middle .goal-intro small {
+      margin-bottom: 8px;
+      color: #e8be8a;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+
+    .yc-course-middle .goal-intro h2 {
+      margin: 0;
+      font-size: clamp(24px, 3vw, 34px);
+      line-height: 1.25;
+      letter-spacing: -0.03em;
+    }
+
+    .yc-course-middle .goal-card {
+      min-height: 138px;
+      padding: 21px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+
+    .yc-course-middle .goal-no {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      margin-bottom: 16px;
+      border-radius: 50%;
+      color: var(--brown-900);
+      background: #edc58f;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .yc-course-middle .goal-card strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 15px;
+    }
+
+    .yc-course-middle .goal-card p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 13px;
+    }
+
+    /* 4일 커리큘럼 */
+    .yc-course-middle .curriculum-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .yc-course-middle .day-card {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.94);
+      box-shadow: 0 18px 50px rgba(56, 33, 18, 0.07);
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .yc-course-middle .day-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 58px rgba(56, 33, 18, 0.12);
+    }
+
+    .yc-course-middle .day-content {
+      flex: 1;
+      padding: 24px 22px 21px;
+    }
+
+    .yc-course-middle .day-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .yc-course-middle .day-pill {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 62px;
+      height: 30px;
+      padding: 0 13px;
+      border-radius: 999px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--brown-800), var(--brown-600));
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .yc-course-middle .day-time {
+      color: #947762;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .yc-course-middle .day-title {
+      min-height: 56px;
+      margin: 0 0 18px;
+      color: var(--brown-900);
+      font-size: 19px;
+      line-height: 1.45;
+      letter-spacing: -0.025em;
+    }
+
+    .yc-course-middle .day-list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .yc-course-middle .day-list li {
+      position: relative;
+      padding-left: 16px;
+      color: #5f5147;
+      font-size: 14px;
+    }
+
+    .yc-course-middle .day-list li::before {
+      content: "";
+      position: absolute;
+      top: 10px;
+      left: 0;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--brown-600);
+      box-shadow: 0 0 0 4px rgba(132, 80, 32, 0.10);
+    }
+
+    .yc-course-middle .day-image-wrap {
+      padding: 0 12px 12px;
+    }
+
+    .yc-course-middle .day-image-wrap .image-frame {
+      min-height: 220px;
+      border-radius: 17px;
+    }
+
+    .yc-course-middle .image-caption {
+      margin: 9px 2px 0;
+      color: #8b7768;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    /* 과정 흐름 */
+    .yc-course-middle .flow-panel {
+      margin-top: 28px;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: linear-gradient(135deg, #fffdfa, #f7efe5);
+    }
+
+    .yc-course-middle .flow-label {
+      margin-bottom: 18px;
+      color: var(--brown-800);
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .yc-course-middle .flow-grid {
+      display: grid;
+      grid-template-columns: repeat(7, auto);
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .yc-course-middle .flow-step {
+      min-width: 150px;
+      padding: 16px 18px;
+      border-radius: 15px;
+      background: #fff;
+      border: 1px solid #eadcca;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(61, 35, 17, 0.05);
+    }
+
+    .yc-course-middle .flow-step strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--brown-800);
+      font-size: 14px;
+    }
+
+    .yc-course-middle .flow-step span {
+      color: #7b695c;
+      font-size: 12px;
+    }
+
+    .yc-course-middle .flow-arrow {
+      color: #b28861;
+      font-size: 22px;
+      font-weight: 300;
+    }
+
+    /* 교육 현장 */
+    .yc-course-middle .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 0.9fr 0.9fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 14px;
+      min-height: 630px;
+    }
+
+    .yc-course-middle .gallery-item {
+      position: relative;
+      min-width: 0;
+      min-height: 0;
+      overflow: hidden;
+      border-radius: 22px;
+    }
+
+    .yc-course-middle .gallery-item:first-child {
+      grid-row: 1 / 3;
+    }
+
+    .yc-course-middle .gallery-item .image-frame {
+      width: 100%;
+      height: 100%;
+      min-height: 100%;
+      border-radius: 22px;
+    }
+
+    .yc-course-middle .gallery-tag {
+      position: absolute;
+      left: 16px;
+      bottom: 16px;
+      z-index: 3;
+      padding: 9px 12px;
+      border: 1px solid rgba(255, 255, 255, 0.34);
+      border-radius: 999px;
+      color: #fff;
+      background: rgba(43, 27, 17, 0.70);
+      font-size: 12px;
+      font-weight: 800;
+      backdrop-filter: blur(10px);
+    }
+
+    /* 특별한 이유 */
+    .yc-course-middle .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .yc-course-middle .feature-card {
+      position: relative;
+      min-height: 230px;
+      padding: 25px 22px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 21px;
+      background: rgba(255, 255, 255, 0.88);
+    }
+
+    .yc-course-middle .feature-card::after {
+      content: "";
+      position: absolute;
+      right: -42px;
+      bottom: -42px;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: rgba(166, 107, 47, 0.07);
+    }
+
+    .yc-course-middle .feature-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      margin-bottom: 24px;
+      border-radius: 16px;
+      color: var(--brown-700);
+      background: linear-gradient(145deg, #fff8ef, #f1e1cd);
+      border: 1px solid #ead7bf;
+      font-size: 22px;
+      font-weight: 900;
+    }
+
+    .yc-course-middle .feature-card h3 {
+      margin: 0 0 10px;
+      color: var(--brown-900);
+      font-size: 17px;
+      line-height: 1.35;
+    }
+
+    .yc-course-middle .feature-card p {
+      margin: 0;
+      color: #746457;
+      font-size: 13px;
+    }
+
+    /* 추천 대상 + 제공 내용 */
+    .yc-course-middle .split-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .yc-course-middle .info-panel {
+      padding: 34px;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background: #fff;
+      box-shadow: 0 18px 50px rgba(57, 34, 17, 0.06);
+    }
+
+    .yc-course-middle .info-panel.dark {
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.12);
+      background: linear-gradient(145deg, #342116, #68401e);
+    }
+
+    .yc-course-middle .panel-label {
+      display: inline-flex;
+      margin-bottom: 16px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      color: var(--brown-700);
+      background: #f4e9da;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .yc-course-middle .dark .panel-label {
+      color: #2f1d12;
+      background: #eac18a;
+    }
+
+    .yc-course-middle .info-panel h3 {
+      margin: 0 0 10px;
+      font-size: 25px;
+      line-height: 1.3;
+      letter-spacing: -0.03em;
+    }
+
+    .yc-course-middle .info-panel > p {
+      margin: 0 0 24px;
+      color: #78695e;
+      font-size: 14px;
+    }
+
+    .yc-course-middle .dark > p {
+      color: rgba(255, 255, 255, 0.68);
+    }
+
+    .yc-course-middle .check-list {
+      display: grid;
+      gap: 11px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .yc-course-middle .check-list li {
+      position: relative;
+      padding: 13px 15px 13px 42px;
+      border-radius: 13px;
+      color: #5f5147;
+      background: #faf6f0;
+      font-size: 14px;
+    }
+
+    .yc-course-middle .dark .check-list li {
+      color: rgba(255, 255, 255, 0.88);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .yc-course-middle .check-list li::before {
+      content: "✓";
+      position: absolute;
+      top: 50%;
+      left: 15px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      transform: translateY(-50%);
+      border-radius: 50%;
+      color: #fff;
+      background: var(--brown-600);
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .yc-course-middle .dark .check-list li::before {
+      color: var(--brown-900);
+      background: #e8bd83;
+    }
+
+    /* 교육 안내 및 비용 */
+    .yc-course-middle .detail-grid {
+      display: grid;
+      grid-template-columns: 0.92fr 1.08fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .yc-course-middle .detail-card {
+      padding: 34px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.94);
+      box-shadow: 0 18px 54px rgba(56, 33, 18, 0.06);
+    }
+
+    .yc-course-middle .detail-card h3 {
+      margin: 0 0 24px;
+      color: var(--brown-900);
+      font-size: 24px;
+      letter-spacing: -0.03em;
+    }
+
+    .yc-course-middle .data-list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+    }
+
+    .yc-course-middle .data-row {
+      display: grid;
+      grid-template-columns: 135px 1fr;
+      align-items: center;
+      min-height: 58px;
+      overflow: hidden;
+      border: 1px solid #eadfd3;
+      border-radius: 13px;
+      background: #fbf8f4;
+    }
+
+    .yc-course-middle .data-row dt,
+    .yc-course-middle .data-row dd {
+      margin: 0;
+      padding: 15px 17px;
+      font-size: 14px;
+    }
+
+    .yc-course-middle .data-row dt {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      color: var(--brown-800);
+      background: #f4eadf;
+      font-weight: 900;
+    }
+
+    .yc-course-middle .data-row dd {
+      color: #5d5047;
+    }
+
+    .yc-course-middle .price-box {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      align-items: center;
+      margin-bottom: 22px;
+      padding: 24px 26px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #f5eadb, #fffaf3);
+      border: 1px solid #ead5ba;
+    }
+
+    .yc-course-middle .price-box small {
+      display: block;
+      margin-bottom: 5px;
+      color: #876d57;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .yc-course-middle .price-box strong {
+      color: var(--brown-900);
+      font-size: 20px;
+    }
+
+    .yc-course-middle .price {
+      color: var(--brown-700);
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      white-space: nowrap;
+    }
+
+    .yc-course-middle .price em {
+      margin-left: 4px;
+      font-size: 18px;
+      font-style: normal;
+      letter-spacing: -0.02em;
+    }
+
+    .yc-course-middle .policy-list {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .yc-course-middle .policy-list li {
+      position: relative;
+      padding-left: 26px;
+      color: #5f5147;
+      font-size: 14px;
+    }
+
+    .yc-course-middle .policy-list li::before {
+      content: "";
+      position: absolute;
+      top: 8px;
+      left: 2px;
+      width: 9px;
+      height: 9px;
+      border: 2px solid var(--brown-600);
+      border-radius: 50%;
+    }
+
+    .yc-course-middle .policy-highlight {
+      display: inline;
+      color: var(--brown-800);
+      font-weight: 900;
+      box-shadow: inset 0 -7px 0 rgba(201, 150, 87, 0.24);
+    }
+
+    .yc-course-middle .refund-note {
+      margin-top: 20px;
+      padding: 15px 17px;
+      border-radius: 14px;
+      color: #754b2e;
+      background: #fff7ed;
+      border: 1px solid #eed7bc;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    /* FAQ */
+    .yc-course-middle .faq-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .yc-course-middle .faq-item {
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      background: rgba(255, 255, 255, 0.92);
+      overflow: hidden;
+    }
+
+    .yc-course-middle .faq-item summary {
+      position: relative;
+      padding: 20px 58px 20px 22px;
+      cursor: pointer;
+      color: var(--brown-900);
+      font-size: 15px;
+      font-weight: 900;
+      list-style: none;
+    }
+
+    .yc-course-middle .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .yc-course-middle .faq-item summary::after {
+      content: "+";
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      transform: translateY(-50%);
+      border-radius: 50%;
+      color: var(--brown-700);
+      background: #f3e8da;
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    .yc-course-middle .faq-item[open] summary::after {
+      content: "−";
+    }
+
+    .yc-course-middle .faq-answer {
+      padding: 0 22px 21px;
+      color: #6d5d52;
+      font-size: 14px;
+    }
+
+    .yc-course-middle .faq-answer p {
+      margin: 0;
+    }
+
+    @media (max-width: 1120px) {
+      .yc-course-middle .goal-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .yc-course-middle .goal-intro {
+        grid-column: 1 / -1;
+        min-height: auto;
+        padding: 0 0 20px;
+        border-right: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+      }
+
+      .yc-course-middle .curriculum-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .yc-course-middle .feature-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .yc-course-middle .flow-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .yc-course-middle .flow-step {
+        width: 100%;
+      }
+
+      .yc-course-middle .flow-arrow {
+        transform: rotate(90deg);
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 820px) {
+      .yc-course-middle .course-wrap {
+        width: min(100% - 28px, 1280px);
+      }
+
+      .yc-course-middle .course-section {
+        padding: 70px 0;
+      }
+
+      .yc-course-middle .section-head {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .yc-course-middle .section-note {
+        max-width: none;
+      }
+
+      .yc-course-middle .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 340px 260px 260px;
+        min-height: 0;
+      }
+
+      .yc-course-middle .gallery-item:first-child {
+        grid-column: 1 / 3;
+        grid-row: auto;
+      }
+
+      .yc-course-middle .feature-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .yc-course-middle .split-grid,
+      .yc-course-middle .detail-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .yc-course-middle .course-wrap {
+        width: min(100% - 22px, 1280px);
+      }
+
+      .yc-course-middle .course-section {
+        padding: 58px 0;
+      }
+
+      .yc-course-middle .goal-grid,
+      .yc-course-middle .curriculum-grid,
+      .yc-course-middle .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .yc-course-middle .goal-band {
+        padding: 32px 0;
+      }
+
+      .yc-course-middle .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: 300px repeat(4, 230px);
+      }
+
+      .yc-course-middle .gallery-item:first-child {
+        grid-column: auto;
+      }
+
+      .yc-course-middle .info-panel,
+      .yc-course-middle .detail-card,
+      .yc-course-middle .flow-panel {
+        padding: 24px 20px;
+      }
+
+      .yc-course-middle .data-row {
+        grid-template-columns: 105px 1fr;
+      }
+
+      .yc-course-middle .data-row dt,
+      .yc-course-middle .data-row dd {
+        padding: 14px 12px;
+        font-size: 13px;
+      }
+
+      .yc-course-middle .price-box {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .yc-course-middle .price {
+        font-size: 40px;
+      }
+    }
+
+    /* =========================================================
+       스크롤 인터랙션 · 마이크로 애니메이션
+       - JS가 실행될 때만 초기 숨김 상태가 적용됩니다.
+       - 사용자의 '동작 줄이기' 설정을 자동으로 존중합니다.
+       ========================================================= */
+    .yc-course-middle .yc-reveal {
+      --yc-delay: 0ms;
+    }
+
+    .yc-course-middle.yc-animate-ready .yc-reveal {
+      opacity: 0;
+      translate: 0 30px;
+      scale: 1;
+      filter: blur(5px);
+      transition:
+        opacity 0.72s cubic-bezier(.22, .61, .36, 1) var(--yc-delay),
+        translate 0.82s cubic-bezier(.22, .61, .36, 1) var(--yc-delay),
+        scale 0.82s cubic-bezier(.22, .61, .36, 1) var(--yc-delay),
+        filter 0.72s ease var(--yc-delay);
+      will-change: opacity, translate, scale, filter;
+    }
+
+    .yc-course-middle.yc-animate-ready .yc-reveal[data-yc-reveal="left"] {
+      translate: -38px 0;
+    }
+
+    .yc-course-middle.yc-animate-ready .yc-reveal[data-yc-reveal="right"] {
+      translate: 38px 0;
+    }
+
+    .yc-course-middle.yc-animate-ready .yc-reveal[data-yc-reveal="zoom"] {
+      translate: 0 18px;
+      scale: 0.965;
+    }
+
+    .yc-course-middle.yc-animate-ready .yc-reveal[data-yc-reveal="soft"] {
+      translate: 0 14px;
+      filter: blur(2px);
+    }
+
+    .yc-course-middle.yc-animate-ready .yc-reveal.yc-inview {
+      opacity: 1;
+      translate: 0 0;
+      scale: 1;
+      filter: blur(0);
+      will-change: auto;
+    }
+
+    /* 섹션 타이틀의 짧은 라인 드로잉 */
+    .yc-course-middle.yc-animate-ready .section-kicker::before {
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform 0.65s cubic-bezier(.22, .61, .36, 1) 0.22s;
+    }
+
+    .yc-course-middle.yc-animate-ready .yc-inview .section-kicker::before,
+    .yc-course-middle.yc-animate-ready .section-kicker.yc-inview::before {
+      transform: scaleX(1);
+    }
+
+    /* 목표 밴드: 매우 느린 배경 이동 */
+    .yc-course-middle .goal-band::before {
+      content: "";
+      position: absolute;
+      inset: -35% -15%;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 30% 50%, rgba(255, 221, 174, 0.12), transparent 24%),
+        radial-gradient(circle at 72% 45%, rgba(255, 255, 255, 0.07), transparent 20%);
+      transform: translate3d(-3%, 0, 0);
+      animation: ycAmbientMove 12s ease-in-out infinite alternate;
+    }
+
+    .yc-course-middle .goal-card {
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.28s ease, background-color 0.28s ease, border-color 0.28s ease;
+    }
+
+    .yc-course-middle .goal-card::after {
+      content: "";
+      position: absolute;
+      top: -60%;
+      left: -85%;
+      width: 55%;
+      height: 220%;
+      pointer-events: none;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.16), transparent);
+      transform: rotate(18deg);
+      transition: left 0.7s ease;
+    }
+
+    .yc-course-middle .goal-card:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.24);
+    }
+
+    .yc-course-middle .goal-card:hover::after {
+      left: 135%;
+    }
+
+    .yc-course-middle.yc-animate-ready .goal-card.yc-inview .goal-no {
+      animation: ycNumberPop 0.58s cubic-bezier(.2, .85, .25, 1.25) calc(var(--yc-delay) + 160ms) both;
+    }
+
+    /* 카드 내부 항목이 한 줄씩 따라오는 효과 */
+    .yc-course-middle.yc-animate-ready .day-card .day-list li,
+    .yc-course-middle.yc-animate-ready .info-panel .check-list li,
+    .yc-course-middle.yc-animate-ready .detail-card .policy-list li,
+    .yc-course-middle.yc-animate-ready .detail-card .data-row {
+      opacity: 0;
+      translate: 0 10px;
+    }
+
+    .yc-course-middle.yc-animate-ready .day-card.yc-inview .day-list li,
+    .yc-course-middle.yc-animate-ready .info-panel.yc-inview .check-list li,
+    .yc-course-middle.yc-animate-ready .detail-card.yc-inview .policy-list li,
+    .yc-course-middle.yc-animate-ready .detail-card.yc-inview .data-row {
+      animation: ycListRise 0.52s cubic-bezier(.22, .61, .36, 1) both;
+    }
+
+    .yc-course-middle .day-list li:nth-child(1),
+    .yc-course-middle .check-list li:nth-child(1),
+    .yc-course-middle .policy-list li:nth-child(1),
+    .yc-course-middle .data-row:nth-child(1) { animation-delay: calc(var(--yc-delay) + 160ms) !important; }
+    .yc-course-middle .day-list li:nth-child(2),
+    .yc-course-middle .check-list li:nth-child(2),
+    .yc-course-middle .policy-list li:nth-child(2),
+    .yc-course-middle .data-row:nth-child(2) { animation-delay: calc(var(--yc-delay) + 220ms) !important; }
+    .yc-course-middle .day-list li:nth-child(3),
+    .yc-course-middle .check-list li:nth-child(3),
+    .yc-course-middle .policy-list li:nth-child(3),
+    .yc-course-middle .data-row:nth-child(3) { animation-delay: calc(var(--yc-delay) + 280ms) !important; }
+    .yc-course-middle .day-list li:nth-child(4),
+    .yc-course-middle .check-list li:nth-child(4),
+    .yc-course-middle .policy-list li:nth-child(4),
+    .yc-course-middle .data-row:nth-child(4) { animation-delay: calc(var(--yc-delay) + 340ms) !important; }
+    .yc-course-middle .day-list li:nth-child(5),
+    .yc-course-middle .check-list li:nth-child(5),
+    .yc-course-middle .policy-list li:nth-child(5),
+    .yc-course-middle .data-row:nth-child(5) { animation-delay: calc(var(--yc-delay) + 400ms) !important; }
+    .yc-course-middle .day-list li:nth-child(n+6),
+    .yc-course-middle .check-list li:nth-child(n+6),
+    .yc-course-middle .policy-list li:nth-child(n+6),
+    .yc-course-middle .data-row:nth-child(n+6) { animation-delay: calc(var(--yc-delay) + 460ms) !important; }
+
+    /* 이미지가 좌우로 열리듯 나타나는 마스크 */
+    .yc-course-middle .image-frame::after {
+      content: "";
+      position: absolute;
+      z-index: 4;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(115deg, #f1e5d5, #fffdfa 52%, #ead7bf);
+      transform: translateX(0);
+      transition: transform 0.95s cubic-bezier(.77, 0, .18, 1) calc(var(--yc-delay, 0ms) + 100ms);
+    }
+
+    .yc-course-middle:not(.yc-animate-ready) .image-frame::after,
+    .yc-course-middle .yc-inview.image-frame::after,
+    .yc-course-middle .yc-inview .image-frame::after {
+      transform: translateX(102%);
+    }
+
+    .yc-course-middle .image-frame img {
+      transition: opacity 0.35s ease, transform 0.85s cubic-bezier(.22, .61, .36, 1), filter 0.65s ease;
+      filter: saturate(0.88) contrast(0.96);
+    }
+
+    .yc-course-middle .yc-inview .image-frame img,
+    .yc-course-middle .image-frame.yc-inview img {
+      filter: saturate(1) contrast(1);
+    }
+
+    /* 과정 흐름: 순서가 이동하는 듯한 연결감 */
+    .yc-course-middle .flow-step {
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .yc-course-middle .flow-step::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--brown-700), var(--gold-400));
+      transition: width 0.58s ease calc(var(--yc-delay, 0ms) + 260ms);
+    }
+
+    .yc-course-middle .flow-step.yc-inview::before {
+      width: 100%;
+    }
+
+    .yc-course-middle .flow-step:hover {
+      transform: translateY(-4px);
+      border-color: #d8b98f;
+      box-shadow: 0 16px 34px rgba(61, 35, 17, 0.10);
+    }
+
+    .yc-course-middle .flow-arrow.yc-inview {
+      animation: ycArrowPulse 1.75s ease-in-out calc(var(--yc-delay) + 380ms) infinite;
+    }
+
+    /* 갤러리 및 정보 카드 호버 */
+    .yc-course-middle .gallery-item,
+    .yc-course-middle .feature-card,
+    .yc-course-middle .info-panel,
+    .yc-course-middle .detail-card,
+    .yc-course-middle .faq-item {
+      transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+    }
+
+    .yc-course-middle .gallery-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 44px rgba(58, 34, 17, 0.14);
+    }
+
+    .yc-course-middle .gallery-item:hover .gallery-tag {
+      transform: translateY(-3px);
+      background: rgba(43, 27, 17, 0.84);
+    }
+
+    .yc-course-middle .gallery-tag {
+      transition: transform 0.28s ease, background-color 0.28s ease;
+    }
+
+    .yc-course-middle .feature-card:hover {
+      transform: translateY(-6px);
+      border-color: #d9b993;
+      box-shadow: 0 20px 46px rgba(57, 34, 17, 0.10);
+    }
+
+    .yc-course-middle .feature-card:hover .feature-icon {
+      transform: rotate(-4deg) scale(1.06);
+    }
+
+    .yc-course-middle .feature-icon {
+      transition: transform 0.3s cubic-bezier(.2, .85, .25, 1.25);
+    }
+
+    .yc-course-middle .info-panel:hover,
+    .yc-course-middle .detail-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 58px rgba(57, 34, 17, 0.10);
+    }
+
+    /* 가격 강조: 화면 진입 시 밑줄이 그어지는 효과 */
+    .yc-course-middle .price-box {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .yc-course-middle .price-box::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--brown-700), var(--gold-400));
+      transition: width 0.9s cubic-bezier(.22, .61, .36, 1) calc(var(--yc-delay, 0ms) + 240ms);
+    }
+
+    .yc-course-middle .detail-card.yc-inview .price-box::after {
+      width: 100%;
+    }
+
+    /* FAQ 열림 */
+    .yc-course-middle .faq-item:hover {
+      border-color: #d9b993;
+      transform: translateX(3px);
+    }
+
+    .yc-course-middle .faq-item summary::after {
+      transition: transform 0.28s ease, background-color 0.28s ease;
+    }
+
+    .yc-course-middle .faq-item[open] summary::after {
+      transform: translateY(-50%) rotate(180deg);
+      background: #ead1b2;
+    }
+
+    .yc-course-middle .faq-item[open] .faq-answer {
+      animation: ycFaqOpen 0.38s cubic-bezier(.22, .61, .36, 1) both;
+    }
+
+    @keyframes ycAmbientMove {
+      0% { transform: translate3d(-3%, -1%, 0) scale(1); }
+      100% { transform: translate3d(4%, 2%, 0) scale(1.04); }
+    }
+
+    @keyframes ycNumberPop {
+      0% { opacity: 0; transform: scale(0.72) rotate(-8deg); }
+      70% { opacity: 1; transform: scale(1.10) rotate(2deg); }
+      100% { opacity: 1; transform: scale(1) rotate(0); }
+    }
+
+    @keyframes ycListRise {
+      from { opacity: 0; translate: 0 10px; }
+      to { opacity: 1; translate: 0 0; }
+    }
+
+    @keyframes ycArrowPulse {
+      0%, 100% { opacity: 0.45; transform: translateX(0); }
+      50% { opacity: 1; transform: translateX(5px); }
+    }
+
+    @keyframes ycFaqOpen {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 1120px) {
+      .yc-course-middle .flow-arrow.yc-inview {
+        animation-name: ycArrowPulseMobile;
+      }
+    }
+
+    @keyframes ycArrowPulseMobile {
+      0%, 100% { opacity: 0.45; transform: rotate(90deg) translateX(0); }
+      50% { opacity: 1; transform: rotate(90deg) translateX(5px); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .yc-course-middle *,
+      .yc-course-middle *::before,
+      .yc-course-middle *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        transition-delay: 0ms !important;
+      }
+
+      .yc-course-middle.yc-animate-ready .yc-reveal,
+      .yc-course-middle.yc-animate-ready .day-card .day-list li,
+      .yc-course-middle.yc-animate-ready .info-panel .check-list li,
+      .yc-course-middle.yc-animate-ready .detail-card .policy-list li,
+      .yc-course-middle.yc-animate-ready .detail-card .data-row {
+        opacity: 1 !important;
+        translate: 0 0 !important;
+        scale: 1 !important;
+        filter: none !important;
+      }
+
+      .yc-course-middle .image-frame::after {
+        display: none !important;
+      }
+    }
+
+  
+
+    /* =========================================================
+       NEXTWOOD DESIGN SYSTEM OVERRIDE
+       - Black / white / neutral gray 중심의 산업적·에디토리얼 톤
+       - 둥근 카드, 과한 그림자, 팝업형 모션 최소화
+       - 기존 콘텐츠와 이미지 URL 구조는 유지
+       ========================================================= */
+    .yc-course-middle {
+      --nw-black: #111111;
+      --nw-black-2: #1c1c1c;
+      --nw-gray-900: #262626;
+      --nw-gray-700: #5c5c5c;
+      --nw-gray-500: #8c8c8c;
+      --nw-gray-300: #cfcfcb;
+      --nw-gray-200: #deded9;
+      --nw-gray-100: #efefeb;
+      --nw-offwhite: #f6f6f2;
+      --nw-white: #ffffff;
+      --nw-wood: #8a7158;
+      --brown-900: var(--nw-black);
+      --brown-800: var(--nw-black-2);
+      --brown-700: var(--nw-gray-900);
+      --brown-600: var(--nw-wood);
+      --brown-500: var(--nw-wood);
+      --gold-400: var(--nw-wood);
+      --cream-50: var(--nw-white);
+      --cream-100: var(--nw-offwhite);
+      --cream-200: var(--nw-gray-100);
+      --cream-300: var(--nw-gray-200);
+      --line: var(--nw-gray-200);
+      --text: var(--nw-black);
+      --muted: var(--nw-gray-700);
+      --white: var(--nw-white);
+      color: var(--nw-black);
+      background: var(--nw-white);
+      font-family: Pretendard, "Noto Sans KR", "Apple SD Gothic Neo", Arial, sans-serif;
+      line-height: 1.72;
+      overflow: clip;
+    }
+
+    .yc-course-middle .course-wrap {
+      width: min(1240px, calc(100% - 64px));
+    }
+
+    .yc-course-middle .course-section {
+      padding: 118px 0;
+    }
+
+    .yc-course-middle > .course-section:nth-of-type(3),
+    .yc-course-middle > .course-section:nth-of-type(5),
+    .yc-course-middle > .course-section:nth-of-type(6) {
+      background: var(--nw-offwhite);
+    }
+
+    .yc-course-middle .course-section + .course-section {
+      border-top: 0;
+    }
+
+    .yc-course-middle .section-head {
+      grid-template-columns: minmax(320px, .85fr) minmax(0, 1.15fr);
+      gap: 88px;
+      align-items: start;
+      margin-bottom: 54px;
+      padding-top: 21px;
+      border-top: 1px solid var(--nw-black);
+    }
+
+    .yc-course-middle .section-kicker {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 18px;
+      color: var(--nw-gray-500);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .19em;
+    }
+
+    .yc-course-middle .section-kicker::before {
+      width: 8px;
+      height: 8px;
+      background: var(--nw-black);
+      border-radius: 0;
+    }
+
+    .yc-course-middle .section-title {
+      max-width: 560px;
+      color: var(--nw-black);
+      font-size: clamp(36px, 4.2vw, 58px);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -.055em;
+    }
+
+    .yc-course-middle .section-desc {
+      max-width: 680px;
+      padding-top: 47px;
+      color: var(--nw-gray-700);
+      font-size: 16px;
+      line-height: 1.85;
+    }
+
+    .yc-course-middle .section-note {
+      align-self: end;
+      max-width: 390px;
+      margin-top: 46px;
+      padding: 15px 0 0;
+      border: 0;
+      border-top: 1px solid var(--nw-gray-300);
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+      color: var(--nw-gray-700);
+      font-size: 12px;
+      backdrop-filter: none;
+    }
+
+    /* 목표 밴드 */
+    .yc-course-middle .goal-band {
+      position: relative;
+      padding: 0;
+      color: var(--nw-white);
+      background: var(--nw-black);
+    }
+
+    .yc-course-middle .goal-band::before {
+      inset: 0;
+      background:
+        linear-gradient(90deg, transparent calc(25% - .5px), rgba(255,255,255,.08) 25%, transparent calc(25% + .5px)),
+        linear-gradient(90deg, transparent calc(50% - .5px), rgba(255,255,255,.08) 50%, transparent calc(50% + .5px)),
+        linear-gradient(90deg, transparent calc(75% - .5px), rgba(255,255,255,.08) 75%, transparent calc(75% + .5px));
+      transform: none;
+      animation: none;
+    }
+
+    .yc-course-middle .goal-grid {
+      position: relative;
+      z-index: 1;
+      grid-template-columns: 1.45fr repeat(4, minmax(0, 1fr));
+      gap: 0;
+      width: min(100%, 1440px);
+    }
+
+    .yc-course-middle .goal-intro,
+    .yc-course-middle .goal-card {
+      min-height: 270px;
+      border: 0;
+      border-right: 1px solid rgba(255,255,255,.15);
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .yc-course-middle .goal-intro {
+      padding: 58px 50px 48px 0;
+      justify-content: space-between;
+    }
+
+    .yc-course-middle .goal-intro small {
+      margin: 0 0 38px;
+      color: rgba(255,255,255,.46);
+      font-size: 10px;
+      letter-spacing: .22em;
+    }
+
+    .yc-course-middle .goal-intro h2 {
+      font-size: clamp(27px, 3vw, 41px);
+      font-weight: 700;
+      line-height: 1.28;
+      letter-spacing: -.045em;
+    }
+
+    .yc-course-middle .goal-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 38px 26px 42px;
+      transition: background-color .35s ease, color .35s ease;
+    }
+
+    .yc-course-middle .goal-card:last-child {
+      border-right: 0;
+    }
+
+    .yc-course-middle .goal-card::after {
+      display: none;
+    }
+
+    .yc-course-middle .goal-card:hover {
+      transform: none;
+      border-color: rgba(255,255,255,.15);
+      background: var(--nw-white);
+      color: var(--nw-black);
+    }
+
+    .yc-course-middle .goal-no {
+      display: block;
+      width: auto;
+      height: auto;
+      margin: 0 auto auto 0;
+      border-radius: 0;
+      color: rgba(255,255,255,.38);
+      background: transparent;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .12em;
+    }
+
+    .yc-course-middle .goal-card:hover .goal-no {
+      color: var(--nw-gray-500);
+    }
+
+    .yc-course-middle .goal-card strong {
+      margin-bottom: 10px;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .yc-course-middle .goal-card p {
+      color: rgba(255,255,255,.55);
+      font-size: 12px;
+      line-height: 1.75;
+    }
+
+    .yc-course-middle .goal-card:hover p {
+      color: var(--nw-gray-700);
+    }
+
+    /* 이미지 공통 */
+    .yc-course-middle .image-frame {
+      min-height: 230px;
+      border: 0;
+      border-radius: 0;
+      background:
+        linear-gradient(135deg, #ededE8 0%, #f8f8f5 100%);
+    }
+
+    .yc-course-middle .image-frame::before {
+      content: "IMAGE";
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      z-index: 2;
+      color: rgba(17,17,17,.38);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .18em;
+    }
+
+    .yc-course-middle .image-frame.is-loaded::before {
+      color: rgba(255,255,255,.72);
+    }
+
+    .yc-course-middle .image-frame img {
+      transform: scale(1.001);
+      filter: grayscale(.08) saturate(.84) contrast(1.02);
+      transition: opacity .35s ease, transform 1s cubic-bezier(.2,.65,.2,1), filter .5s ease;
+    }
+
+    .yc-course-middle .image-frame:hover img {
+      transform: scale(1.025);
+      filter: grayscale(0) saturate(.94) contrast(1.03);
+    }
+
+    .yc-course-middle .image-fallback {
+      align-items: flex-start;
+      justify-content: flex-end;
+      gap: 4px;
+      padding: 26px;
+      text-align: left;
+      color: var(--nw-gray-500);
+    }
+
+    .yc-course-middle .image-fallback strong {
+      color: var(--nw-gray-900);
+      font-size: 13px;
+      letter-spacing: -.01em;
+    }
+
+    .yc-course-middle .image-fallback span {
+      font-size: 11px;
+    }
+
+    /* 커리큘럼 */
+    .yc-course-middle .curriculum-grid {
+      gap: 0;
+      border-top: 1px solid var(--nw-black);
+      border-left: 1px solid var(--nw-gray-200);
+    }
+
+    .yc-course-middle .day-card {
+      border: 0;
+      border-right: 1px solid var(--nw-gray-200);
+      border-bottom: 1px solid var(--nw-gray-200);
+      border-radius: 0;
+      background: var(--nw-white);
+      box-shadow: none;
+      overflow: hidden;
+      transition: background-color .35s ease, border-color .35s ease;
+    }
+
+    .yc-course-middle .day-card:hover {
+      transform: none;
+      box-shadow: none;
+      background: #fafaf8;
+    }
+
+    .yc-course-middle .day-content {
+      min-height: 330px;
+      padding: 30px 27px 28px;
+    }
+
+    .yc-course-middle .day-top {
+      margin-bottom: 44px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--nw-gray-200);
+    }
+
+    .yc-course-middle .day-pill {
+      min-width: 0;
+      height: auto;
+      padding: 0;
+      border-radius: 0;
+      color: var(--nw-black);
+      background: transparent;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .14em;
+    }
+
+    .yc-course-middle .day-time {
+      color: var(--nw-gray-500);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .08em;
+    }
+
+    .yc-course-middle .day-title {
+      min-height: 72px;
+      margin-bottom: 26px;
+      color: var(--nw-black);
+      font-size: 21px;
+      font-weight: 700;
+      line-height: 1.4;
+      letter-spacing: -.035em;
+    }
+
+    .yc-course-middle .day-list {
+      gap: 0;
+      border-top: 1px solid var(--nw-gray-200);
+    }
+
+    .yc-course-middle .day-list li {
+      padding: 10px 0 10px 19px;
+      border-bottom: 1px solid var(--nw-gray-100);
+      color: var(--nw-gray-700);
+      font-size: 13px;
+    }
+
+    .yc-course-middle .day-list li::before {
+      top: 18px;
+      width: 6px;
+      height: 1px;
+      border-radius: 0;
+      background: var(--nw-black);
+      box-shadow: none;
+    }
+
+    .yc-course-middle .day-image-wrap {
+      padding: 0;
+    }
+
+    .yc-course-middle .day-image-wrap .image-frame {
+      min-height: 235px;
+      border-radius: 0;
+    }
+
+    .yc-course-middle .image-caption {
+      margin: 0;
+      padding: 11px 15px;
+      border-top: 1px solid rgba(255,255,255,.12);
+      color: var(--nw-gray-500);
+      background: var(--nw-black);
+      font-size: 10px;
+      text-align: left;
+      letter-spacing: .05em;
+    }
+
+    /* 흐름 */
+    .yc-course-middle .flow-panel {
+      margin-top: 42px;
+      padding: 0;
+      border: 1px solid var(--nw-black);
+      border-radius: 0;
+      background: var(--nw-white);
+    }
+
+    .yc-course-middle .flow-label {
+      margin: 0;
+      padding: 16px 20px;
+      color: var(--nw-white);
+      background: var(--nw-black);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+    }
+
+    .yc-course-middle .flow-grid {
+      grid-template-columns: repeat(7, auto);
+      gap: 0;
+      justify-content: stretch;
+    }
+
+    .yc-course-middle .flow-step {
+      min-width: 0;
+      min-height: 124px;
+      padding: 26px 18px;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+      text-align: left;
+    }
+
+    .yc-course-middle .flow-step::before {
+      top: 0;
+      bottom: auto;
+      height: 2px;
+      background: var(--nw-black);
+    }
+
+    .yc-course-middle .flow-step:hover {
+      transform: none;
+      border-color: transparent;
+      box-shadow: none;
+      background: var(--nw-offwhite);
+    }
+
+    .yc-course-middle .flow-step strong {
+      margin-bottom: 9px;
+      color: var(--nw-black);
+      font-size: 14px;
+    }
+
+    .yc-course-middle .flow-step span {
+      color: var(--nw-gray-500);
+      font-size: 11px;
+    }
+
+    .yc-course-middle .flow-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 34px;
+      color: var(--nw-gray-300);
+      font-size: 17px;
+    }
+
+    /* 갤러리 */
+    .yc-course-middle .gallery-grid {
+      gap: 8px;
+      min-height: 670px;
+    }
+
+    .yc-course-middle .gallery-item,
+    .yc-course-middle .gallery-item .image-frame {
+      border-radius: 0;
+    }
+
+    .yc-course-middle .gallery-item:hover {
+      transform: none;
+      box-shadow: none;
+    }
+
+    .yc-course-middle .gallery-tag {
+      left: 0;
+      bottom: 0;
+      padding: 12px 15px;
+      border: 0;
+      border-radius: 0;
+      color: var(--nw-white);
+      background: rgba(17,17,17,.92);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      backdrop-filter: none;
+    }
+
+    .yc-course-middle .gallery-item:hover .gallery-tag {
+      transform: none;
+      background: var(--nw-black);
+    }
+
+    /* 교육 특징 */
+    .yc-course-middle .feature-grid {
+      gap: 0;
+      border-top: 1px solid var(--nw-black);
+      border-left: 1px solid var(--nw-gray-200);
+    }
+
+    .yc-course-middle .feature-card {
+      min-height: 315px;
+      padding: 31px 25px;
+      border: 0;
+      border-right: 1px solid var(--nw-gray-200);
+      border-bottom: 1px solid var(--nw-gray-200);
+      border-radius: 0;
+      background: var(--nw-white);
+      transition: background-color .35s ease, color .35s ease;
+    }
+
+    .yc-course-middle .feature-card::after {
+      display: none;
+    }
+
+    .yc-course-middle .feature-icon {
+      display: block;
+      width: auto;
+      height: auto;
+      margin-bottom: 88px;
+      border: 0;
+      border-radius: 0;
+      color: var(--nw-gray-300);
+      background: transparent;
+      font-size: 33px;
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: -.04em;
+    }
+
+    .yc-course-middle .feature-card h3 {
+      margin-bottom: 14px;
+      color: inherit;
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    .yc-course-middle .feature-card p {
+      color: var(--nw-gray-700);
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .yc-course-middle .feature-card:hover {
+      transform: none;
+      border-color: var(--nw-gray-200);
+      background: var(--nw-black);
+      color: var(--nw-white);
+      box-shadow: none;
+    }
+
+    .yc-course-middle .feature-card:hover .feature-icon {
+      transform: none;
+      color: rgba(255,255,255,.28);
+    }
+
+    .yc-course-middle .feature-card:hover p {
+      color: rgba(255,255,255,.62);
+    }
+
+    /* 추천 대상 / 제공 내용 */
+    .yc-course-middle .split-grid {
+      gap: 8px;
+    }
+
+    .yc-course-middle .info-panel {
+      min-height: 590px;
+      padding: 48px 45px;
+      border: 1px solid var(--nw-gray-200);
+      border-radius: 0;
+      background: var(--nw-white);
+      box-shadow: none;
+    }
+
+    .yc-course-middle .info-panel.dark {
+      color: var(--nw-white);
+      border-color: var(--nw-black);
+      background: var(--nw-black);
+    }
+
+    .yc-course-middle .info-panel:hover,
+    .yc-course-middle .detail-card:hover {
+      transform: none;
+      box-shadow: none;
+    }
+
+    .yc-course-middle .panel-label {
+      display: block;
+      margin-bottom: 45px;
+      padding: 0 0 13px;
+      border-bottom: 1px solid var(--nw-gray-300);
+      border-radius: 0;
+      color: var(--nw-gray-500);
+      background: transparent;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .16em;
+    }
+
+    .yc-course-middle .dark .panel-label {
+      color: rgba(255,255,255,.46);
+      background: transparent;
+      border-color: rgba(255,255,255,.18);
+    }
+
+    .yc-course-middle .info-panel h3 {
+      margin-bottom: 18px;
+      font-size: clamp(27px, 3vw, 38px);
+      font-weight: 700;
+      line-height: 1.3;
+      letter-spacing: -.045em;
+    }
+
+    .yc-course-middle .info-panel > p {
+      max-width: 560px;
+      margin-bottom: 42px;
+      color: var(--nw-gray-700);
+      line-height: 1.8;
+    }
+
+    .yc-course-middle .dark > p {
+      color: rgba(255,255,255,.55);
+    }
+
+    .yc-course-middle .check-list {
+      gap: 0;
+      border-top: 1px solid var(--nw-gray-200);
+    }
+
+    .yc-course-middle .dark .check-list {
+      border-color: rgba(255,255,255,.15);
+    }
+
+    .yc-course-middle .check-list li,
+    .yc-course-middle .dark .check-list li {
+      padding: 15px 0 15px 27px;
+      border: 0;
+      border-bottom: 1px solid var(--nw-gray-100);
+      border-radius: 0;
+      color: var(--nw-gray-700);
+      background: transparent;
+      font-size: 13px;
+    }
+
+    .yc-course-middle .dark .check-list li {
+      border-color: rgba(255,255,255,.1);
+      color: rgba(255,255,255,.76);
+    }
+
+    .yc-course-middle .check-list li::before,
+    .yc-course-middle .dark .check-list li::before {
+      content: "";
+      top: 26px;
+      left: 2px;
+      width: 8px;
+      height: 1px;
+      border-radius: 0;
+      background: currentColor;
+      transform: none;
+    }
+
+    /* 실습 결과 이미지 */
+    .yc-course-middle .split-grid > .image-frame[style] {
+      min-height: 470px !important;
+    }
+
+    /* 안내 / 가격 */
+    .yc-course-middle .detail-grid {
+      gap: 8px;
+      grid-template-columns: .9fr 1.1fr;
+    }
+
+    .yc-course-middle .detail-card {
+      padding: 46px 42px;
+      border: 1px solid var(--nw-gray-200);
+      border-radius: 0;
+      background: var(--nw-white);
+      box-shadow: none;
+    }
+
+    .yc-course-middle .detail-card h3 {
+      margin-bottom: 34px;
+      padding-bottom: 17px;
+      border-bottom: 1px solid var(--nw-black);
+      color: var(--nw-black);
+      font-size: 21px;
+      font-weight: 700;
+    }
+
+    .yc-course-middle .data-list {
+      gap: 0;
+      border-top: 1px solid var(--nw-gray-200);
+    }
+
+    .yc-course-middle .data-row {
+      min-height: 61px;
+      border: 0;
+      border-bottom: 1px solid var(--nw-gray-200);
+      border-radius: 0;
+      background: transparent;
+    }
+
+    .yc-course-middle .data-row dt,
+    .yc-course-middle .data-row dd {
+      padding: 17px 14px;
+      font-size: 13px;
+    }
+
+    .yc-course-middle .data-row dt {
+      color: var(--nw-gray-500);
+      background: transparent;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+
+    .yc-course-middle .data-row dd {
+      color: var(--nw-gray-900);
+      font-weight: 600;
+    }
+
+    .yc-course-middle .price-box {
+      margin-bottom: 29px;
+      padding: 26px 28px;
+      border: 0;
+      border-radius: 0;
+      color: var(--nw-white);
+      background: var(--nw-black);
+    }
+
+    .yc-course-middle .price-box small {
+      color: rgba(255,255,255,.45);
+      letter-spacing: .08em;
+    }
+
+    .yc-course-middle .price-box strong {
+      color: var(--nw-white);
+      font-size: 18px;
+    }
+
+    .yc-course-middle .price {
+      color: var(--nw-white);
+      font-size: clamp(38px, 4.5vw, 56px);
+      font-weight: 700;
+    }
+
+    .yc-course-middle .price em {
+      color: rgba(255,255,255,.65);
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .yc-course-middle .price-box::after {
+      height: 2px;
+      background: var(--nw-wood);
+    }
+
+    .yc-course-middle .policy-list {
+      gap: 0;
+      border-top: 1px solid var(--nw-gray-200);
+    }
+
+    .yc-course-middle .policy-list li {
+      padding: 14px 0 14px 22px;
+      border-bottom: 1px solid var(--nw-gray-100);
+      color: var(--nw-gray-700);
+      font-size: 13px;
+    }
+
+    .yc-course-middle .policy-list li::before {
+      top: 22px;
+      left: 2px;
+      width: 7px;
+      height: 1px;
+      border: 0;
+      border-radius: 0;
+      background: var(--nw-black);
+    }
+
+    .yc-course-middle .policy-highlight {
+      color: var(--nw-black);
+      box-shadow: inset 0 -4px 0 rgba(138,113,88,.25);
+    }
+
+    .yc-course-middle .refund-note {
+      margin-top: 27px;
+      padding: 14px 16px;
+      border: 1px solid var(--nw-gray-300);
+      border-radius: 0;
+      color: var(--nw-gray-700);
+      background: var(--nw-offwhite);
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    /* FAQ */
+    .yc-course-middle .faq-list {
+      gap: 0;
+      border-top: 1px solid var(--nw-black);
+    }
+
+    .yc-course-middle .faq-item {
+      border: 0;
+      border-bottom: 1px solid var(--nw-gray-200);
+      border-radius: 0;
+      background: transparent;
+    }
+
+    .yc-course-middle .faq-item:hover {
+      transform: none;
+      border-color: var(--nw-black);
+      background: var(--nw-offwhite);
+    }
+
+    .yc-course-middle .faq-item summary {
+      padding: 25px 70px 25px 4px;
+      color: var(--nw-black);
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .yc-course-middle .faq-item summary::before {
+      content: "Q";
+      display: inline-block;
+      width: 34px;
+      color: var(--nw-gray-500);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+    }
+
+    .yc-course-middle .faq-item summary::after,
+    .yc-course-middle .faq-item[open] summary::after {
+      right: 5px;
+      width: auto;
+      height: auto;
+      border-radius: 0;
+      color: var(--nw-black);
+      background: transparent;
+      font-size: 24px;
+      font-weight: 300;
+    }
+
+    .yc-course-middle .faq-answer {
+      max-width: 880px;
+      padding: 0 44px 28px 38px;
+      color: var(--nw-gray-700);
+      font-size: 13px;
+      line-height: 1.85;
+    }
+
+    /* NEXTWOOD 모션: 짧고 직선적인 등장, 과한 확대/바운스 제거 */
+    .yc-course-middle.yc-animate-ready .yc-reveal,
+    .yc-course-middle.yc-animate-ready .yc-reveal[data-yc-reveal="left"],
+    .yc-course-middle.yc-animate-ready .yc-reveal[data-yc-reveal="right"],
+    .yc-course-middle.yc-animate-ready .yc-reveal[data-yc-reveal="zoom"],
+    .yc-course-middle.yc-animate-ready .yc-reveal[data-yc-reveal="soft"] {
+      opacity: 0;
+      translate: 0 22px;
+      scale: 1;
+      filter: none;
+      clip-path: inset(0 0 14% 0);
+      transition:
+        opacity .72s cubic-bezier(.2,.65,.2,1) var(--yc-delay),
+        translate .82s cubic-bezier(.2,.65,.2,1) var(--yc-delay),
+        clip-path .82s cubic-bezier(.2,.65,.2,1) var(--yc-delay);
+    }
+
+    .yc-course-middle.yc-animate-ready .yc-reveal.yc-inview {
+      opacity: 1;
+      translate: 0 0;
+      scale: 1;
+      filter: none;
+      clip-path: inset(0 0 0 0);
+    }
+
+    .yc-course-middle.yc-animate-ready .goal-card.yc-inview .goal-no,
+    .yc-course-middle .flow-arrow.yc-inview {
+      animation: none;
+    }
+
+    .yc-course-middle .image-frame::after {
+      background: var(--nw-black);
+      transition: transform .9s cubic-bezier(.77,0,.18,1) calc(var(--yc-delay, 0ms) + 70ms);
+    }
+
+    .yc-course-middle .feature-icon,
+    .yc-course-middle .goal-card,
+    .yc-course-middle .flow-step,
+    .yc-course-middle .gallery-item,
+    .yc-course-middle .info-panel,
+    .yc-course-middle .detail-card {
+      will-change: auto;
+    }
+
+    @media (max-width: 1120px) {
+      .yc-course-middle .course-wrap {
+        width: min(100% - 48px, 1240px);
+      }
+
+      .yc-course-middle .goal-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .yc-course-middle .goal-intro {
+        grid-column: 1 / -1;
+        min-height: 220px;
+        padding: 46px 0;
+        border-right: 0;
+        border-bottom: 1px solid rgba(255,255,255,.15);
+      }
+
+      .yc-course-middle .goal-card {
+        min-height: 225px;
+      }
+
+      .yc-course-middle .curriculum-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .yc-course-middle .feature-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .yc-course-middle .flow-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .yc-course-middle .flow-step {
+        width: 100%;
+        min-height: auto;
+        padding: 20px;
+        border-bottom: 1px solid var(--nw-gray-200);
+      }
+
+      .yc-course-middle .flow-arrow {
+        min-height: 34px;
+        transform: rotate(90deg);
+      }
+    }
+
+    @media (max-width: 820px) {
+      .yc-course-middle .course-wrap {
+        width: min(100% - 34px, 1240px);
+      }
+
+      .yc-course-middle .course-section {
+        padding: 84px 0;
+      }
+
+      .yc-course-middle .section-head {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-bottom: 38px;
+      }
+
+      .yc-course-middle .section-desc,
+      .yc-course-middle .section-note {
+        max-width: none;
+        margin-top: 0;
+        padding-top: 0;
+      }
+
+      .yc-course-middle .section-note {
+        padding-top: 14px;
+      }
+
+      .yc-course-middle .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 360px 245px 245px;
+        min-height: 0;
+      }
+
+      .yc-course-middle .feature-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .yc-course-middle .info-panel {
+        min-height: 0;
+      }
+
+      .yc-course-middle .split-grid,
+      .yc-course-middle .detail-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .yc-course-middle .course-wrap {
+        width: min(100% - 24px, 1240px);
+      }
+
+      .yc-course-middle .course-section {
+        padding: 67px 0;
+      }
+
+      .yc-course-middle .section-head {
+        padding-top: 16px;
+      }
+
+      .yc-course-middle .section-title {
+        font-size: clamp(31px, 10.5vw, 43px);
+      }
+
+      .yc-course-middle .section-desc {
+        font-size: 14px;
+      }
+
+      .yc-course-middle .goal-grid,
+      .yc-course-middle .curriculum-grid,
+      .yc-course-middle .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .yc-course-middle .goal-intro {
+        min-height: 230px;
+        padding: 40px 0;
+      }
+
+      .yc-course-middle .goal-card {
+        min-height: 205px;
+        padding: 32px 24px;
+        border-right: 0;
+        border-bottom: 1px solid rgba(255,255,255,.15);
+      }
+
+      .yc-course-middle .day-content {
+        min-height: 0;
+      }
+
+      .yc-course-middle .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: 310px repeat(4, 225px);
+      }
+
+      .yc-course-middle .gallery-item:first-child {
+        grid-column: auto;
+      }
+
+      .yc-course-middle .info-panel,
+      .yc-course-middle .detail-card {
+        padding: 34px 24px;
+      }
+
+      .yc-course-middle .data-row {
+        grid-template-columns: 98px 1fr;
+      }
+
+      .yc-course-middle .price-box {
+        grid-template-columns: 1fr;
+      }
+
+      .yc-course-middle .faq-item summary {
+        padding: 21px 50px 21px 2px;
+        font-size: 14px;
+      }
+
+      .yc-course-middle .faq-answer {
+        padding: 0 24px 23px 34px;
+      }
+    }
+
+  </style>
+</head>
+<body style="margin:0;background:#fff;">
+
+<!-- =========================================================
+     상단 메인 비주얼 영역은 사용자가 직접 디자인
+     아래부터 중간 콘텐츠 시작
+     ========================================================= -->
+<main class="yc-course-middle">
+
+  <!-- 교육을 통해 얻게 되는 핵심 목표 -->
+  <section class="goal-band" aria-label="교육 목표">
+    <div class="course-wrap goal-grid">
+      <div class="goal-intro">
+        <small>4-DAY PRACTICAL COURSE</small>
+        <h2>설계부터 CAM, CNC 실가공까지<br>하나의 흐름으로 연결합니다.</h2>
+      </div>
+
+      <article class="goal-card">
+        <span class="goal-no">01</span>
+        <strong>2D·3D 가공 설계</strong>
+        <p>퓨전(fusion)으로 조각, 패턴, 2D·3D 가구 모델링 하는 과정을 익힙니다.</p>
+      </article>
+
+      <article class="goal-card">
+        <span class="goal-no">03</span>
+        <strong>CAM 데이터 생성</strong>
+        <p>아트캠 활용, 공구 선택부터 툴패스, 시뮬레이션, 가공 순서 설정까지 실습합니다.</p>
+      </article>
+
+      <article class="goal-card">
+        <span class="goal-no">04</span>
+        <strong>CNC 실가공</strong>
+        <p>원점 설정, 장비 셋업, 실제 가공과 후가공까지 현장에서 직접 경험합니다.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- 4일 커리큘럼 -->
+  <section class="course-section">
+    <div class="course-wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Curriculum</div>
+          <h2 class="section-title">4일 동안 이렇게 배웁니다</h2>
+          <p class="section-desc">소프트웨어 기능을 따로 배우는 방식이 아니라, 실제 제품을 설계하고 가공 데이터로 전환한 뒤 CNC 라우터로 제작하는 전체 공정을 순서대로 경험합니다.</p>
+        </div>
+        <div class="section-note">각 과정은 이론 설명 후 바로 실습으로 이어지며, 실습 결과물을 기반으로 다음 단계가 연결됩니다.</div>
+      </div>
+
+      <div class="curriculum-grid">
+        <article class="day-card">
+          <div class="day-content">
+            <div class="day-top">
+              <span class="day-pill">DAY 1</span>
+              <span class="day-time">설계 기초</span>
+            </div>
+            <h3 class="day-title">퓨전, 아트캠 기본 &amp;<br>CAD / CAM의 이해</h3>
+            <ul class="day-list">
+              <li>퓨전, 아트캠 인터페이스 이해</li>
+              <li>스케치 및 구속조건</li>
+              <li>파라메트릭 모델링 기초</li>
+              <li>도마, 트레이 모델링 실습</li>
+            </ul>
+          </div>
+          <div class="day-image-wrap">
+            <div class="image-frame">
+              <img src="https://i.imgur.com/KLSUISG.jpeg" alt="Fusion 화면 및 목공 제품 모델링 이미지" />
+              <div class="image-fallback"><strong>DAY 1 이미지 영역</strong><span>Fusion 화면 또는 모델링 결과 이미지</span></div>
+            </div>
+            <p class="image-caption"></p>
+          </div>
+        </article>
+
+        <article class="day-card">
+          <div class="day-content">
+            <div class="day-top">
+              <span class="day-pill">DAY 2</span>
+              <span class="day-time">가공 설계</span>
+            </div>
+            <h3 class="day-title">목공용 퓨전 기능&amp;<br>2D/3D 가공 설계</h3>
+            <ul class="day-list">
+              <li>Carveco 기본 인터페이스</li>
+              <li>2D 목공 특화 기능 및 공구 이해</li>
+              <li>3D 모델링 및 가공 기초</li>
+              <li>도면 및 모델링 제작 실습</li>
+            </ul>
+          </div>
+          <div class="day-image-wrap">
+            <div class="image-frame">
+              <img src="https://i.imgur.com/JSxKFoe.jpeg" alt="Carveco 화면 및 3D 부조 가공 설계 이미지" />
+              <div class="image-fallback"><strong>DAY 2 이미지 영역</strong><span>Carveco 화면 또는 조각 설계 이미지</span></div>
+            </div>
+            <p class="image-caption"></p>
+          </div>
+        </article>
+
+        <article class="day-card">
+          <div class="day-content">
+            <div class="day-top">
+              <span class="day-pill">DAY 3</span>
+              <span class="day-time">CAM 실무</span>
+            </div>
+            <h3 class="day-title">목공용 아트캠 기능 &amp;<br>공구 세팅 및 툴패스 생성</h3>
+            <ul class="day-list">
+              <li>공구 선택 및 세팅</li>
+              <li>2D/3D 툴패스 생성</li>
+              <li>시뮬레이션 및 검증</li>
+              <li>가공 순서 및 팁</li>
+            </ul>
+          </div>
+          <div class="day-image-wrap">
+            <div class="image-frame">
+              <img src="https://i.imgur.com/nmyPA1T.jpeg" alt="Fusion 또는 Carveco CAM 툴패스 이미지" />
+              <div class="image-fallback"><strong>DAY 3 이미지 영역</strong><span>CAM 툴패스 또는 시뮬레이션 이미지</span></div>
+            </div>
+            <p class="image-caption"></p>
+          </div>
+        </article>
+
+        <article class="day-card">
+          <div class="day-content">
+            <div class="day-top">
+              <span class="day-pill">DAY 4</span>
+              <span class="day-time">현장 실습</span>
+            </div>
+            <h3 class="day-title">CNC 라우터 운용 &amp;<br>실제 제작</h3>
+            <ul class="day-list">
+              <li>CNC 라우터 기본 이해</li>
+              <li>장비 셋업 및 원점 설정</li>
+              <li>CNC 가공 실습(필수)</li>
+              <li>후가공 및 조립, 완성</li>
+            </ul>
+          </div>
+          <div class="day-image-wrap">
+            <div class="image-frame">
+              <img src="https://i.imgur.com/EjC4L4M.jpeg" alt="CNC 라우터 목재 가공 이미지" />
+              <div class="image-fallback"><strong>DAY 4 이미지 영역</strong><span>CNC 라우터 실제 가공 이미지</span></div>
+            </div>
+            <p class="image-caption"></p>
+          </div>
+        </article>
+      </div>
+
+      <div class="flow-panel">
+        <div class="flow-label">하나의 결과물이 완성되는 실습 흐름</div>
+        <div class="flow-grid">
+          <div class="flow-step"><strong>제품 아이디어</strong><span>제작 목표와 형태 설정</span></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step"><strong>Fusion 설계</strong><span>형상 및 치수 모델링</span></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step"><strong>Carveco·CAM</strong><span>공구와 툴패스 생성</span></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step"><strong>CNC 제작</strong><span>가공, 후가공, 완성</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 현장 이미지 -->
+  <section class="course-section">
+    <div class="course-wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Training Space</div>
+          <h2 class="section-title">교육 현장 미리보기</h2>
+          <p class="section-desc">실제 장비와 작업 환경이 갖춰진 화성 공장 교육장에서 진행합니다. 소프트웨어 실습과 CNC 가공을 같은 공간에서 연결할 수 있도록 구성합니다.</p>
+        </div>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <div class="image-frame">
+            <img src="https://i.imgur.com/nbNcLLP.jpeg" alt="화성 공장 교육장 전경" />
+            <div class="image-fallback"><strong>교육장 전경 이미지</strong><span>공장 내부 또는 전체 교육 환경</span></div>
+          </div>
+          <span class="gallery-tag">화성 공장 교육장 전경</span>
+        </div>
+
+        <div class="gallery-item">
+          <div class="image-frame">
+            <img src="https://i.imgur.com/gOi6DN5.jpeg" alt="Fusion 실습 이미지" />
+            <div class="image-fallback"><strong>Fusion 실습 이미지</strong><span>수강생 실습 화면 또는 강의 장면</span></div>
+          </div>
+          <span class="gallery-tag">Fusion 실습</span>
+        </div>
+
+        <div class="gallery-item">
+          <div class="image-frame">
+            <img src="https://i.imgur.com/KLSUISG.jpeg" alt="Carveco 실습 이미지" />
+            <div class="image-fallback"><strong>Carveco 실습 이미지</strong><span>조각·패턴 설계 또는 수업 장면</span></div>
+          </div>
+          <span class="gallery-tag">Carveco 실습</span>
+        </div>
+
+        <div class="gallery-item">
+          <div class="image-frame">
+            <img src="https://i.imgur.com/XMosg2z.jpeg" alt="CNC 장비 이미지" />
+            <div class="image-fallback"><strong>CNC 장비 이미지</strong><span>장비 전경 또는 가공 준비 장면</span></div>
+          </div>
+          <span class="gallery-tag">CNC 장비</span>
+        </div>
+
+        <div class="gallery-item">
+          <div class="image-frame">
+            <img src="https://i.imgur.com/decTieZ.jpeg" alt="목공 제품 완성 예시 이미지" />
+            <div class="image-fallback"><strong>완성품 예시 이미지</strong><span>도마, 트레이, 조각 제품 등</span></div>
+          </div>
+          <span class="gallery-tag">완성품 예시</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 교육 특징 -->
+  <section class="course-section">
+    <div class="course-wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Why This Course</div>
+          <h2 class="section-title">이 교육이 특별한 이유</h2>
+          <p class="section-desc">기능 설명에 그치지 않고, 설계와 가공이 실제 현장에서 어떻게 연결되는지 직접 확인할 수 있도록 구성한 실무형 목공 교육입니다.</p>
+        </div>
+      </div>
+
+      <div class="feature-grid">
+        <article class="feature-card">
+          <div class="feature-icon">01</div>
+          <h3>실무 중심 커리큘럼</h3>
+          <p>이론보다 실습에 집중합니다. 매일 직접 설계하고, 가공 데이터를 만들며, 결과물을 확인합니다.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon">02</div>
+          <h3>현업 엔지니어 직강</h3>
+          <p>실제 가구 제작 경험을 가진 전문가가 설계와 CAM, 장비 운용을 직접 교육합니다.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon">03</div>
+          <h3>실제 공장 교육</h3>
+          <p>교육장용 모형 장비가 아니라 실제 생산 현장에서 사용하는 CNC 라우터로 실습합니다.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon">04</div>
+          <h3>소수 정예 운영</h3>
+          <p>질문하고 바로 피드백을 받을 수 있도록 최소 인원 중심으로 밀도 있게 진행합니다.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon">05</div>
+          <h3>자료 제공 &amp; Payback</h3>
+          <p>예제 파일과 CAM 파일을 제공하며, 수업 후 소프트웨어 구매 시 교육비 Payback이 적용됩니다.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 선택 이미지 영역 -->
+  <section class="course-section">
+    <div class="course-wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Practice Result</div>
+          <h2 class="section-title">실습 과정과 결과물</h2>
+          <p class="section-desc">설계 화면, CAM 데이터, 실제 가공 장면을 나란히 보여주면 교육의 실무성과 완성 과정을 더욱 명확하게 전달할 수 있습니다.</p>
+        </div>
+      </div>
+
+      <div class="split-grid">
+        <div class="image-frame" style="min-height:410px;">
+          <img src="https://i.imgur.com/zNiqDO1.jpeg" alt="설계와 CAM 실습 과정 이미지" />
+          <div class="image-fallback"><strong>설계·CAM 과정 이미지</strong><span>Fusion 모델링 → Carveco/CAM 화면 구성 권장</span></div>
+        </div>
+        <div class="image-frame" style="min-height:410px;">
+          <img src="https://i.imgur.com/decTieZ.jpeg" alt="CNC 가공 및 완성 결과물 이미지" />
+          <div class="image-fallback"><strong>가공·완성 결과 이미지</strong><span>CNC 가공 장면 → 완성품 이미지 구성 권장</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="course-section">
+    <div class="course-wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">FAQ</div>
+          <h2 class="section-title">자주 묻는 질문</h2>
+        </div>
+      </div>
+
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Fusion이나 Carveco를 처음 사용해도 참여할 수 있나요?</summary>
+          <div class="faq-answer"><p>네. 첫날과 둘째 날에 각 프로그램의 기본 인터페이스와 핵심 기능부터 순서대로 배우며, 실습을 통해 다음 단계로 연결합니다.</p></div>
+        </details>
+
+        <details class="faq-item">
+          <summary>개인 노트북은 반드시 준비해야 하나요?</summary>
+          <div class="faq-answer"><p>네. 소프트웨어 실습이 포함되어 있으므로 개인 노트북은 필수이며, 원활한 작업을 위해 마우스도 함께 준비해 주세요.</p></div>
+        </details>
+
+        <details class="faq-item">
+          <summary>교육은 몇 명부터 진행되나요?</summary>
+          <div class="faq-answer"><p>최소 2명 모집 시 교육이 진행됩니다. 소수 정예 방식으로 운영하여 질문과 피드백이 원활하도록 구성합니다.</p></div>
+        </details>
+
+        <details class="faq-item">
+          <summary>교육비 할인은 어떻게 적용되나요?</summary>
+          <div class="faq-answer"><p>2 Set을 동시에 결제하면 총 50만 원이 적용됩니다. 2명 이상 단체 신청 시에도 각 수강생별 할인 기준은 10만 원으로 동일하게 적용됩니다.</p></div>
+        </details>
+
+        <details class="faq-item">
+          <summary>소프트웨어 구매 시 교육비 Payback은 어떻게 적용되나요?</summary>
+          <div class="faq-answer"><p>Carveco 또는 Fusion 수업 수강 후 해당 소프트웨어를 구매하는 경우 교육비 Payback이 적용됩니다. 세부 적용 방식은 신청 과정에서 안내할 수 있습니다.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+<!-- =========================================================
+     중간 콘텐츠 끝
+     최하단 신청 CTA 및 푸터 영역은 사용자가 직접 디자인
+     ========================================================= -->
+
+<script>
+  (function () {
+    var root = document.querySelector('.yc-course-middle');
+    if (!root) return;
+
+    /* 이미지 링크가 정상 로드되면 안내 문구를 숨깁니다. */
+    root.querySelectorAll('.image-frame img').forEach(function (img) {
+      var frame = img.closest('.image-frame');
+      var markLoaded = function () {
+        if (img.naturalWidth > 0) frame.classList.add('is-loaded');
+      };
+      img.addEventListener('load', markLoaded);
+      img.addEventListener('error', function () {
+        frame.classList.remove('is-loaded');
+      });
+      if (img.complete) markLoaded();
+    });
+
+    var registered = [];
+
+    function addReveal(element, type, delay) {
+      if (!element || element.dataset.ycAnimated === 'true') return;
+      element.dataset.ycAnimated = 'true';
+      element.dataset.ycReveal = type || 'up';
+      element.style.setProperty('--yc-delay', Math.min(delay || 0, 520) + 'ms');
+      element.classList.add('yc-reveal');
+      registered.push(element);
+    }
+
+    function addGroup(selector, type, step, start) {
+      root.querySelectorAll(selector).forEach(function (element, index) {
+        addReveal(element, type, (start || 0) + index * (step || 80));
+      });
+    }
+
+    /* 섹션 제목은 좌우에서 부드럽게 진입 */
+    root.querySelectorAll('.section-head').forEach(function (head) {
+      var main = head.children[0];
+      var note = head.children[1];
+      addReveal(main, 'left', 0);
+      if (note) addReveal(note, 'right', 100);
+    });
+
+    /* 첫 목표 영역 */
+    root.querySelectorAll('.goal-grid').forEach(function (grid) {
+      Array.prototype.forEach.call(grid.children, function (element, index) {
+        addReveal(element, index === 0 ? 'left' : 'up', index * 90);
+      });
+    });
+
+    /* 카드·이미지·정보 영역은 그룹별로 순차 노출 */
+    addGroup('.curriculum-grid > .day-card', 'up', 90, 0);
+    addGroup('.gallery-grid > .gallery-item', 'zoom', 80, 0);
+    addGroup('.feature-grid > .feature-card', 'up', 75, 0);
+    addGroup('.split-grid > *', 'zoom', 110, 0);
+    addGroup('.detail-grid > .detail-card', 'up', 120, 0);
+    addGroup('.faq-list > .faq-item', 'soft', 65, 0);
+
+    /* 과정 흐름은 왼쪽부터 오른쪽으로 이어지게 구성 */
+    root.querySelectorAll('.flow-panel').forEach(function (panel) {
+      addReveal(panel.querySelector('.flow-label'), 'left', 0);
+      panel.querySelectorAll('.flow-grid > *').forEach(function (element, index) {
+        addReveal(element, element.classList.contains('flow-arrow') ? 'soft' : 'zoom', 90 + index * 75);
+      });
+    });
+
+    /* 카드 밖에 단독으로 배치된 결과 이미지 */
+    root.querySelectorAll('.course-section > .course-wrap > .split-grid .image-frame').forEach(function (frame, index) {
+      addReveal(frame, 'zoom', index * 110);
+    });
+
+    root.classList.add('yc-animate-ready');
+
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      registered.forEach(function (element) {
+        element.classList.add('yc-inview');
+      });
+      return;
+    }
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('yc-inview');
+        observer.unobserve(entry.target);
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -8% 0px'
+    });
+
+    registered.forEach(function (element) {
+      observer.observe(element);
+    });
+  })();
+</script>
+</body>
+</html>
